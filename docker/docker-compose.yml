@@ -1,0 +1,11 @@
+services:
+  ml-runner:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: pia-ml-cnn:latest
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:Z
+    environment:
+      - TF_CPP_MIN_LOG_LEVEL=2

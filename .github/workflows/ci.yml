@@ -1,0 +1,60 @@
+name: PIA-ML CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate-notebook-and-code:
+    name: Validate Notebook JSON, Python Syntax & Lint
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12-slim
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install lightweight validation tools inside container
+        run: |
+          pip install --no-cache-dir nbformat ruff
+
+      - name: Validate Jupyter Notebook schema and extract code cells
+        run: |
+          python3 - <<'EOF'
+          import json, nbformat, pathlib, sys
+          nb_path = pathlib.Path("notebooks/PIA_CNN_Piedra_Papel_Tijera.ipynb")
+          nb = nbformat.read(nb_path, as_version=4)
+          nbformat.validate(nb)
+          assert len(nb.cells) > 0, "Notebook must contain cells"
+          code_cells = [c for c in nb.cells if c.cell_type == "code"]
+          for idx, cell in enumerate(code_cells, start=1):
+              compile(cell.source, f"{nb_path}:cell_{idx}", "exec")
+          print(f"Validated {nb_path}: {len(nb.cells)} cells ({len(code_cells)} code cells compiled cleanly).")
+          EOF
+
+      - name: Lint Python helper scripts with ruff
+        run: |
+          ruff check scripts/
+
+  build-latex-report:
+    name: Compile LaTeX Report to PDF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX report in containerized TeXLive
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: report
+          latexmk_use_lualatex: false
+          args: -pdf -interaction=nonstopmode -file-line-error
+
+      - name: Upload compiled PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PIA-ML-Report-PDF
+          path: report/main.pdf

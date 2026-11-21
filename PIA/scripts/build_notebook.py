@@ -56,7 +56,7 @@ def build_cells() -> list[dict]:
 **Unidad de Aprendizaje:** Introducción a la Inteligencia Artificial / Introducción al Aprendizaje Máquina  
 **Dataset:** [Rock, Paper, Scissors (Kaggle — `drgfreeman/rockpaperscissors`)](https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Xraight/FIME-Machine-Learning-/blob/main/notebooks/PIA_CNN_Piedra_Papel_Tijera.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Xraight/FIME-Machine-Learning-/blob/main/PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb)
 
 ---
 
@@ -967,9 +967,9 @@ else:
 
 
 def main() -> None:
-    """Write the complete Google Colab notebook to `notebooks/PIA_CNN_Piedra_Papel_Tijera.ipynb`."""
+    """Write the complete Google Colab notebook to `PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb`."""
     project_root = Path(__file__).resolve().parent.parent
-    out_path = project_root / "notebooks" / "PIA_CNN_Piedra_Papel_Tijera.ipynb"
+    out_path = project_root / "PIA_CNN_Piedra_Papel_Tijera.ipynb"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     cells = build_cells()

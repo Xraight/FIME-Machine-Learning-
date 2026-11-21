@@ -5,15 +5,15 @@ __pycache__/
 .ruff_cache/
 
 # LaTeX build artifacts
-report/*.aux
-report/*.bbl
-report/*.blg
-report/*.fdb_latexmk
-report/*.fls
-report/*.log
-report/*.out
-report/*.toc
-report/*.synctex.gz
+PIA/report/*.aux
+PIA/report/*.bbl
+PIA/report/*.blg
+PIA/report/*.fdb_latexmk
+PIA/report/*.fls
+PIA/report/*.log
+PIA/report/*.out
+PIA/report/*.toc
+PIA/report/*.synctex.gz
 
 # Local OS/editor files
 .DS_Store

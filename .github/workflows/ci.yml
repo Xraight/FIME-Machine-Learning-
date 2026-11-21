@@ -23,8 +23,8 @@ jobs:
       - name: Validate Jupyter Notebook schema and extract code cells
         run: |
           python3 - <<'EOF'
-          import json, nbformat, pathlib, sys
-          nb_path = pathlib.Path("notebooks/PIA_CNN_Piedra_Papel_Tijera.ipynb")
+          import nbformat, pathlib
+          nb_path = pathlib.Path("PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb")
           nb = nbformat.read(nb_path, as_version=4)
           nbformat.validate(nb)
           assert len(nb.cells) > 0, "Notebook must contain cells"
@@ -36,7 +36,7 @@ jobs:
 
       - name: Lint Python helper scripts with ruff
         run: |
-          ruff check scripts/
+          ruff check PIA/scripts/
 
   build-latex-report:
     name: Compile LaTeX Report to PDF
@@ -49,7 +49,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          working_directory: report
+          working_directory: PIA/report
           latexmk_use_lualatex: false
           args: -pdf -interaction=nonstopmode -file-line-error
 
@@ -57,4 +57,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PIA-ML-Report-PDF
-          path: report/main.pdf
+          path: PIA/report/main.pdf

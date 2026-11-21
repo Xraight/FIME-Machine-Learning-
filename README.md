@@ -15,13 +15,14 @@ FIME-Machine-Learning-/
 ├── AF1/                                      # Actividad Fundamental 1
 │   ├── AF1.ipynb
 │   ├── Actividad fundamental 1.pdf
-│   └── description
+│   └── README.md
 ├── AF2/                                      # Actividad Fundamental 2 (Aprendizaje Supervisado)
 │   ├── AF2.ipynb
 │   ├── Actividad fundamental 2.pdf
-│   └── Description
+│   └── README.md
 ├── PIA/                                      # Proyecto Integrador de Aprendizaje (Proyecto Final)
 │   ├── PIA_CNN_Piedra_Papel_Tijera.ipynb     # Libreta ejecutada lista para Google Colab
+│   ├── README.md                             # Descripción e instrucciones del PIA
 │   ├── report/                               # Reporte académico en LaTeX (plantilla FIME–UANL) + figuras
 │   ├── outputs/                              # Métricas JSON + paquete ZIP listo para Murfy AI
 │   ├── docker/                               # Entorno reproducible en Docker

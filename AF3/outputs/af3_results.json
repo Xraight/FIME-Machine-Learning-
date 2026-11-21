@@ -1,0 +1,113 @@
+{
+  "seed": 42,
+  "n_patients": 5110,
+  "bmi_missing_imputed": 201,
+  "bmi_median": 28.1,
+  "total_strokes": 249,
+  "global_stroke_rate_pct": 4.87279843444227,
+  "raw_variances": {
+    "age": 511.33179182433514,
+    "avg_glucose_level": 2050.600819911376,
+    "bmi": 59.283259900892446
+  },
+  "raw_means": {
+    "age": 43.226614481409,
+    "avg_glucose_level": 106.1476771037182,
+    "bmi": 28.862035225048924
+  },
+  "raw_stds": {
+    "age": 22.61264672311349,
+    "avg_glucose_level": 45.28356015058198,
+    "bmi": 7.699562318787507
+  },
+  "elbow_inertias": {
+    "1": 15330.000000000002,
+    "2": 10386.747169146802,
+    "3": 6813.682859091765,
+    "4": 5140.290900795959,
+    "5": 4387.449341897847,
+    "6": 3979.976828675322,
+    "7": 3610.5429603795774,
+    "8": 3304.1833868810754,
+    "9": 3041.880766580933,
+    "10": 2807.396727294851
+  },
+  "silhouette_scores": {
+    "2": 0.30015097292392634,
+    "3": 0.3713847941547923,
+    "4": 0.37274072785864615,
+    "5": 0.3231252511507936,
+    "6": 0.31172548616565476,
+    "7": 0.28275804494508144,
+    "8": 0.28351889674941105,
+    "9": 0.2899475135493064,
+    "10": 0.27811221582089984
+  },
+  "optimal_k": 4,
+  "pca_explained_variance_pct": [
+    49.735518910655955,
+    28.140432166152156
+  ],
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "n_patients": 1877,
+      "population_share_pct": 36.731898238747554,
+      "centroid_age": 60.02774813233724,
+      "centroid_glucose": 89.5351387406617,
+      "centroid_bmi": 27.74162219850587,
+      "centroid_z_age": 0.7430699309346027,
+      "centroid_z_glucose": -0.3668917381807867,
+      "centroid_z_bmi": -0.14553069716139586,
+      "stroke_0": 1736,
+      "stroke_1": 141,
+      "stroke_prevalence_pct": 7.511987213638785,
+      "share_of_all_strokes_pct": 56.62650602409639
+    },
+    {
+      "cluster_id": 1,
+      "n_patients": 922,
+      "population_share_pct": 18.043052837573384,
+      "centroid_age": 41.524838012958966,
+      "centroid_glucose": 90.32183585313174,
+      "centroid_bmi": 39.025701943844496,
+      "centroid_z_age": -0.07526509515073339,
+      "centroid_z_glucose": -0.34951735115406846,
+      "centroid_z_bmi": 1.320160930176009,
+      "stroke_0": 907,
+      "stroke_1": 15,
+      "stroke_prevalence_pct": 1.6268980477223427,
+      "share_of_all_strokes_pct": 6.024096385542169
+    },
+    {
+      "cluster_id": 2,
+      "n_patients": 1639,
+      "population_share_pct": 32.07436399217221,
+      "centroid_age": 17.88834655277609,
+      "centroid_glucose": 92.67278828553995,
+      "centroid_bmi": 22.80756558877364,
+      "centroid_z_age": -1.120644915451375,
+      "centroid_z_glucose": -0.29759602489698367,
+      "centroid_z_bmi": -0.7864164073745584,
+      "stroke_0": 1635,
+      "stroke_1": 4,
+      "stroke_prevalence_pct": 0.24405125076266015,
+      "share_of_all_strokes_pct": 1.6064257028112447
+    },
+    {
+      "cluster_id": 3,
+      "n_patients": 672,
+      "population_share_pct": 13.150684931506849,
+      "centroid_age": 60.54396423248882,
+      "centroid_glucose": 207.29815201192247,
+      "centroid_bmi": 32.75380029806259,
+      "centroid_z_age": 0.7659008106750171,
+      "centroid_z_glucose": 2.233931548920444,
+      "centroid_z_bmi": 0.5055022307367699,
+      "stroke_0": 583,
+      "stroke_1": 89,
+      "stroke_prevalence_pct": 13.244047619047619,
+      "share_of_all_strokes_pct": 35.7429718875502
+    }
+  ]
+}

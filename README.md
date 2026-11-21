@@ -12,7 +12,7 @@
 
 ```text
 FIME-Machine-Learning-/
-├── AF1/                                      # Actividad Fundamental 1
+├── AF1/                                      # Actividad Fundamental 1 (EDA y Preprocesamiento)
 │   ├── AF1.ipynb
 │   ├── Actividad fundamental 1.pdf
 │   └── README.md
@@ -20,6 +20,12 @@ FIME-Machine-Learning-/
 │   ├── AF2.ipynb
 │   ├── Actividad fundamental 2.pdf
 │   └── README.md
+├── AF3/                                      # Actividad Fundamental 3 (Clustering K-Means)
+│   ├── AF3.ipynb
+│   ├── README.md
+│   ├── report/
+│   ├── outputs/
+│   └── scripts/
 ├── PIA/                                      # Proyecto Integrador de Aprendizaje (Proyecto Final)
 │   ├── PIA_CNN_Piedra_Papel_Tijera.ipynb     # Libreta ejecutada lista para Google Colab
 │   ├── README.md                             # Descripción e instrucciones del PIA
@@ -35,6 +41,7 @@ FIME-Machine-Learning-/
 | :--- | :--- | :--- | :--- |
 | **AF1** | [`AF1/`](./AF1/) | [`AF1/AF1.ipynb`](./AF1/AF1.ipynb) | [`AF1/Actividad fundamental 1.pdf`](./AF1/Actividad%20fundamental%201.pdf) |
 | **AF2** | [`AF2/`](./AF2/) | [`AF2/AF2.ipynb`](./AF2/AF2.ipynb) | [`AF2/Actividad fundamental 2.pdf`](./AF2/Actividad%20fundamental%202.pdf) |
+| **AF3** | [`AF3/`](./AF3/) | [`AF3/AF3.ipynb`](./AF3/AF3.ipynb) | [`AF3/report/main.tex`](./AF3/report/main.tex) / [`AF3/outputs/AF3_Reporte_LaTeX_MurfyAI.zip`](./AF3/outputs/AF3_Reporte_LaTeX_MurfyAI.zip) |
 | **PIA (Proyecto Final)** | [`PIA/`](./PIA/) | [`PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb`](./PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb) | [`PIA/report/main.tex`](./PIA/report/main.tex) / [`PIA/outputs/PIA_ML_Reporte_LaTeX_MurfyAI.zip`](./PIA/outputs/PIA_ML_Reporte_LaTeX_MurfyAI.zip) |
 
 ---

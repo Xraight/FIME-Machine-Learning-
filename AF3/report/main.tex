@@ -1,0 +1,100 @@
+% -----------------------------------------------------------------
+%  main.tex –  Plantilla con modo Equipo / Individual
+% -----------------------------------------------------------------
+\documentclass[letterpaper,12pt]{article}
+
+% ----------------------  Paquetes base ---------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,mexico]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{array,booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage[square,numbers]{natbib}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{datetime2}
+\usepackage{draftwatermark}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage[shortlabels]{enumitem}
+\usepackage[normalem]{ulem}  
+\usepackage{ifthen}
+\usepackage{etoolbox} 
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\DeclareUnicodeCharacter{202F}{\,}
+
+% -------------------  Macros para integrantes --------------------
+% Integrante:  #1 Nombre  #2 Matrícula  #3 Hora  #4 OK/OUT
+\newcommand{\Integrante}[4]{%
+	\ifthenelse{\equal{#4}{OUT}}%
+	{\textcolor{red}{\sout{#1}} & \textcolor{red}{\sout{#2}} & \textcolor{red}{\sout{#3}} \\}%
+	{#1 & #2 & #3 \\}%
+}
+\newcommand{\ListaIntegrantes}{}   % se redefine en datos.tex
+
+% --------------  Macros para entrega individual ------------------
+\newcommand{\SingleName}{}  % Nombre del alumno
+\newcommand{\SingleMat}{}   % Matrícula
+\newcommand{\SingleHora}{}  % Hora clase
+\newcommand{\EntregaIndividual}{false} % "true" o "false" (datos.tex)
+
+% --------------------  Configuración general ---------------------
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+\lstset{basicstyle=\ttfamily\footnotesize, numbers=left,
+	frame=single, breaklines=true, tabsize=2, captionpos=b}
+
+% Cargar datos específicos
+\input{datos}
+
+% Marca de agua
+\newcommand{\WatermarkText}{}
+\ifthenelse{\equal{\EntregaIndividual}{false}}{%
+	% Equipo
+	\renewcommand{\WatermarkText}{Grupo \myGrupo\ – Equipo \myTeam\ — \DTMnow}%
+}{%
+	% Individual
+	\renewcommand{\WatermarkText}{\SingleName\ (\SingleMat)\ — \DTMnow}%
+}
+
+\SetWatermarkText{\textsc{\WatermarkText}}
+\SetWatermarkScale{0.15}
+\DraftwatermarkOptions{color={[RGB]{235,235,235}}, angle=55}
+
+% Márgenes y encabezado
+\textheight=22cm \textwidth=17cm
+\topmargin=-1.6cm \oddsidemargin=-0.3cm
+\fancyhf{}
+\lhead{\myMateria}
+\rhead{\myUnidad}
+\fancyfoot[C]{\thepage}
+\rfoot{\DTMnow}
+\setlength{\headheight}{33pt}
+\pagestyle{fancy}
+
+% -------------------------- Documento ----------------------------
+\begin{document}
+	
+	\input{portada.tex}
+	
+	\tableofcontents
+	\newpage
+	
+	\input{contenido.tex}
+	
+	\newpage
+	\nocite{*}
+	\bibliographystyle{apalike}
+	\bibliography{bibliografia.bib}
+	
+	\centering\small
+	\bigskip
+	Las imágenes utilizadas en este documento son propiedad de sus respectivos autores y se incluyen únicamente con fines académicos.
+	
+\end{document}

@@ -1,4 +1,4 @@
-name: PIA-ML CI/CD Pipeline
+name: FIME-ML CI/CD Pipeline
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     branches: [main, master]
 
 jobs:
-  validate-notebook-and-code:
-    name: Validate Notebook JSON, Python Syntax & Lint
+  validate-notebooks-and-code:
+    name: Validate Notebooks JSON, Python Syntax & Lint
     runs-on: ubuntu-latest
     container:
       image: python:3.12-slim
@@ -20,32 +20,40 @@ jobs:
         run: |
           pip install --no-cache-dir nbformat ruff
 
-      - name: Validate Jupyter Notebook schema and extract code cells
+      - name: Validate Jupyter Notebooks schema and extract code cells
         run: |
           python3 - <<'EOF'
           import nbformat, pathlib
-          nb_path = pathlib.Path("PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb")
-          nb = nbformat.read(nb_path, as_version=4)
-          nbformat.validate(nb)
-          assert len(nb.cells) > 0, "Notebook must contain cells"
-          code_cells = [c for c in nb.cells if c.cell_type == "code"]
-          for idx, cell in enumerate(code_cells, start=1):
-              compile(cell.source, f"{nb_path}:cell_{idx}", "exec")
-          print(f"Validated {nb_path}: {len(nb.cells)} cells ({len(code_cells)} code cells compiled cleanly).")
+          for rel in ["AF3/AF3.ipynb", "PIA/PIA_CNN_Piedra_Papel_Tijera.ipynb"]:
+              nb_path = pathlib.Path(rel)
+              nb = nbformat.read(nb_path, as_version=4)
+              nbformat.validate(nb)
+              code_cells = [c for c in nb.cells if c.cell_type == "code"]
+              for idx, cell in enumerate(code_cells, start=1):
+                  compile(cell.source, f"{nb_path}:cell_{idx}", "exec")
+              print(f"Validated {nb_path}: {len(nb.cells)} cells ({len(code_cells)} code cells compiled cleanly).")
           EOF
 
       - name: Lint Python helper scripts with ruff
         run: |
-          ruff check PIA/scripts/
+          ruff check AF3/scripts/ PIA/scripts/
 
-  build-latex-report:
-    name: Compile LaTeX Report to PDF
+  build-latex-reports:
+    name: Compile AF3 and PIA LaTeX Reports to PDF
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX report in containerized TeXLive
+      - name: Compile AF3 LaTeX report
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: AF3/report
+          latexmk_use_lualatex: false
+          args: -pdf -interaction=nonstopmode -file-line-error
+
+      - name: Compile PIA LaTeX report
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
@@ -53,8 +61,10 @@ jobs:
           latexmk_use_lualatex: false
           args: -pdf -interaction=nonstopmode -file-line-error
 
-      - name: Upload compiled PDF artifact
+      - name: Upload compiled PDF artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: PIA-ML-Report-PDF
-          path: PIA/report/main.pdf
+          name: FIME-ML-Reports-PDF
+          path: |
+            AF3/report/main.pdf
+            PIA/report/main.pdf

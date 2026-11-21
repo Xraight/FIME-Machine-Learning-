@@ -1,0 +1,51 @@
+\thispagestyle{empty}
+
+% Escudos ----------------------------------------------------------
+\begin{figure}[ht]
+	\minipage{0.4\textwidth}\centering
+	\includegraphics[width=3cm]{Imágenes/FIME_LOGO}
+	\endminipage\hfill
+	\minipage{0.4\textwidth}\centering
+	\includegraphics[width=3cm]{Imágenes/logo_uanl}
+	\endminipage
+\end{figure}
+
+\vspace{0cm}
+
+% Encabezado institucional ----------------------------------------
+\begin{center}
+	{\large\scshape Facultad de Ingeniería Mecánica y Eléctrica\par}
+	{\normalsize\scshape Universidad Autónoma de Nuevo León\par}
+	\vspace{0.5cm}
+	{\Large\textbf{\myMateria}\par}
+	\vspace{0.25cm}
+	{\LARGE\textbf{\MyReport}\par}
+	\vspace{0.2cm}
+	{\Large \myUnidad\par}
+	\vspace{0.5cm}
+	{\large\textbf{Fecha:} \myDate\par}
+	\vspace{0.2cm}
+	{\large\textbf{Día y hora de clase:} \myHora \quad | \quad \textbf{Grupo:} \myGrupo\par}
+	\vspace{0.2cm}
+	{\large\textbf{Profesor:} \myTeacher\par}
+	\vspace{0.6cm}
+
+	% ---------- Tabla o bloque individual según bandera --------------
+	\ifthenelse{\equal{\EntregaIndividual}{false}}{% -------------- EQUIPO
+		{\large\textbf{Integrantes (Equipo \myTeam)}\par}
+		\vspace{0.3cm}
+		\renewcommand{\arraystretch}{1.15}
+		\begin{tabular}{p{8cm} p{3cm} p{2cm}}
+			\textbf{Nombre} & \textbf{Matrícula} & \textbf{Hora} \\ \midrule
+			\ListaIntegrantes
+		\end{tabular}
+	}{% -------------------------------------------------- INDIVIDUAL
+		{\large\textbf{Datos del alumno}\par}
+		\vspace{0.3cm}
+		\textbf{Nombre:} \SingleName \\[2pt]
+		\textbf{Matrícula:} \SingleMat \\[2pt]
+		\textbf{Hora clase:} \SingleHora
+	}
+\end{center}
+
+\clearpage
